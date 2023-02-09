@@ -1,12 +1,17 @@
 import sys
+import requests
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QMainWindow, QApplication
 
 class MyWidget(QMainWindow):
     def __init__(self):
         super().__init__()
+        print('Введите координаты')
+        coord_x, coord_y = float(input()), float(input())
+        print('Введите размер окна')
+        x, y = int(input()), int(input())
         self.setObjectName("MainWindow")
-        self.resize(443, 437)
+        self.resize(x, y)
         self.setStyleSheet("background-color: rgb(186, 248, 105);")
         self.centralwidget = QtWidgets.QWidget(self)
         self.centralwidget.setObjectName("centralwidget")
@@ -24,6 +29,7 @@ class MyWidget(QMainWindow):
 
         QtCore.QMetaObject.connectSlotsByName(self)
         self.label.setText("TextLabel")
+
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
