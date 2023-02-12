@@ -8,6 +8,9 @@ class MyWidget(QMainWindow):
         super().__init__()
         print('Введите координаты')
         coord_x, coord_y = float(input()), float(input())
+        while coord_x > 100 or coord_y > 100:
+            print("неверные данные")
+            coord_x, coord_y = float(input()), float(input())
         print('Введите размер окна')
         x, y = int(input()), int(input())
         self.setObjectName("MainWindow")
@@ -29,6 +32,7 @@ class MyWidget(QMainWindow):
 
         QtCore.QMetaObject.connectSlotsByName(self)
         self.label.setText("TextLabel")
+
 
 
 if __name__ == '__main__':
