@@ -12,7 +12,7 @@ class MyWidget(QMainWindow):
             print("неверные данные")
             coord_x, coord_y = float(input()), float(input())
         print('Введите масштаб')
-        x, y = float(input()), float(input())
+        z = float(input())
         self.setObjectName("MainWindow")
         self.resize(2500, 1000)
         self.setStyleSheet("background-color: rgb(186, 248, 105);")
@@ -33,7 +33,7 @@ class MyWidget(QMainWindow):
         QtCore.QMetaObject.connectSlotsByName(self)
         self.label.setText("TextLabel")
 
-        '''m = "http://static-maps.yandex.ru/1.x/?ll={coord_x, coord_y}&z={z}&l={type}".format()
+        m = "http://static-maps.yandex.ru/1.x/?ll={coord_x, coord_y}&z={z}&l={type}".format()
         response = requests.get(m)
         if not response:
             print("Ошибка выполнения запроса:")
@@ -45,7 +45,7 @@ class MyWidget(QMainWindow):
             file.write(response.content)
 
         img = QtGui.QPixmap(im)
-        self.label_5.setPixmap(img)'''
+        self.label_5.setPixmap(img)
 
 
 if __name__ == '__main__':
