@@ -1,6 +1,6 @@
-import request, sys
+import requests, sys
 m = "http://static-maps.yandex.ru/1.x/?ll={ll}&z={z}&l={type}".format()
-response = request.get(m)
+response = requests.get(m)
 if not response:
     print("Ошибка выполнения запроса:")
     print(m)
