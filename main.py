@@ -44,6 +44,10 @@ class MyWidget(QMainWindow):
         with open(im, "wb") as file:
             file.write(response.content)
 
+        img = QtGui.QPixmap(im)
+        self.label_5.setPixmap(img)
+
+
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
