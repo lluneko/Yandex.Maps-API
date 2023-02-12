@@ -3,6 +3,7 @@ import requests
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QMainWindow, QApplication
 
+
 class MyWidget(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -33,7 +34,7 @@ class MyWidget(QMainWindow):
         QtCore.QMetaObject.connectSlotsByName(self)
         self.label.setText("TextLabel")
 
-        m = "http://static-maps.yandex.ru/1.x/?ll={coord_x, coord_y}&z={z}&l={type}".format()
+        m = f"http://static-maps.yandex.ru/1.x/?ll={coord_x, coord_y}&z={z}&l={type}"
         response = requests.get(m)
         if not response:
             print("Ошибка выполнения запроса:")
