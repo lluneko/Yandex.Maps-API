@@ -78,7 +78,6 @@ class MyWidget(QMainWindow):
                 print("Http статус:", response.status_code, "(", response.reason, ")")
                 sys.exit(1)
             im = "m.png"
-            os.remove(im)
             with open(im, "wb") as file:
                 file.write(response.content)
 
