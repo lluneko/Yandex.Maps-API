@@ -70,7 +70,7 @@ class MyWidget(QMainWindow):
             self.label.setPixmap(img)
         if event.key() == Qt.Key_PageDown:
             self.z += 1
-            m = f"http://static-maps.yandex.ru/1.x/?ll={self.coord_x},{self.coord_y}&self.z={self.z}&l=map"
+            m = f"http://static-maps.yandex.ru/1.x/?ll={self.coord_x},{self.coord_y}&z={self.z}&l=map"
             response = requests.get(m)
             if not response:
                 print("Ошибка выполнения запроса:")
