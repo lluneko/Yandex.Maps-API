@@ -2,6 +2,7 @@ import sys
 import requests
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QMainWindow, QApplication
+from PyQt5.QtCore import Qt
 
 
 class MyWidget(QMainWindow):
@@ -53,7 +54,7 @@ class MyWidget(QMainWindow):
 
     def keyPressEvent(self, event):
         if event.key() == Qt.Key_PageUp:
-            self.z += 10
+            self.z -= 1
             m = f"http://static-maps.yandex.ru/1.x/?ll={self.coord_x},{self.coord_y}&z={self.z}&l=map"
             response = requests.get(m)
             if not response:
@@ -68,7 +69,7 @@ class MyWidget(QMainWindow):
             img = QtGui.QPixmap(im)
             self.label.setPixmap(img)
         if event.key() == Qt.Key_PageDown:
-            self.z -= 1
+            self.z += 1
             m = f"http://static-maps.yandex.ru/1.x/?ll={self.coord_x},{self.coord_y}&self.z={self.z}&l=map"
             response = requests.get(m)
             if not response:
