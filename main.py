@@ -2,6 +2,7 @@ import sys
 import requests
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QMainWindow, QApplication
+from PyQt5.QtCore import Qt
 
 
 class MyWidget(QMainWindow):
@@ -50,6 +51,10 @@ class MyWidget(QMainWindow):
 
         img = QtGui.QPixmap(im)
         self.label.setPixmap(img)
+
+        def keyPressEvent(self, event):
+            if event.key() == Qt.Key_PageUp:
+                self.label.setPixmap('!!!')
 
 
 if __name__ == '__main__':
