@@ -1,4 +1,5 @@
 import sys
+import os
 import requests
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QMainWindow, QApplication
@@ -63,8 +64,7 @@ class MyWidget(QMainWindow):
                 print("Http статус:", response.status_code, "(", response.reason, ")")
                 sys.exit(1)
             im = "m.png"
-            with open(im, 'wb'):
-                pass
+            os.remove(im)
             with open(im, "wb") as file:
                 file.write(response.content)
 
@@ -80,8 +80,7 @@ class MyWidget(QMainWindow):
                 print("Http статус:", response.status_code, "(", response.reason, ")")
                 sys.exit(1)
             im = "m.png"
-            with open(im, 'wb'):
-                pass
+            os.remove(im)
             with open(im, "wb") as file:
                 file.write(response.content)
 
