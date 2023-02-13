@@ -47,7 +47,7 @@ class MyWidget(QMainWindow):
 
     def keyPressEvent(self, event):
         if event.key() == Qt.Key_PageUp:
-            if self.z < 17:
+            if self.z <= 17:
                 self.z += 1
                 m = f"http://static-maps.yandex.ru/1.x/?ll={self.coord_x},{self.coord_y}&z={self.z}&l=map"
                 response = requests.get(m)
@@ -63,7 +63,7 @@ class MyWidget(QMainWindow):
                 img = QtGui.QPixmap(im)
                 self.label.setPixmap(img)
         if event.key() == Qt.Key_PageDown:
-            if self.z > 1:
+            if self.z >= 1:
                 self.z -= 1
                 m = f"http://static-maps.yandex.ru/1.x/?ll={self.coord_x},{self.coord_y}&z={self.z}&l=map"
                 response = requests.get(m)
