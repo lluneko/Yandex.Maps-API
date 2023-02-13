@@ -24,16 +24,9 @@ class MyWidget(QMainWindow):
         self.centralwidget = QtWidgets.QWidget(self)
         self.centralwidget.setObjectName("centralwidget")
         self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(20, 10, 480, 490))
+        self.label.setGeometry(QtCore.QRect(10, 10, 490, 490))
         self.label.setObjectName("label")
         self.setCentralWidget(self.centralwidget)
-        self.menubar = QtWidgets.QMenuBar(self)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 443, 26))
-        self.menubar.setObjectName("menubar")
-        self.setMenuBar(self.menubar)
-        self.statusbar = QtWidgets.QStatusBar(self)
-        self.statusbar.setObjectName("statusbar")
-        self.setStatusBar(self.statusbar)
 
         QtCore.QMetaObject.connectSlotsByName(self)
         self.label.setText("TextLabel")
@@ -54,7 +47,7 @@ class MyWidget(QMainWindow):
 
     def keyPressEvent(self, event):
         if event.key() == Qt.Key_PageUp:
-            self.z -= 1
+            self.z += 1
             m = f"http://static-maps.yandex.ru/1.x/?ll={self.coord_x},{self.coord_y}&z={self.z}&l=map"
             response = requests.get(m)
             if not response:
@@ -69,7 +62,7 @@ class MyWidget(QMainWindow):
             img = QtGui.QPixmap(im)
             self.label.setPixmap(img)
         if event.key() == Qt.Key_PageDown:
-            self.z += 1
+            self.z -= 1
             m = f"http://static-maps.yandex.ru/1.x/?ll={self.coord_x},{self.coord_y}&z={self.z}&l=map"
             response = requests.get(m)
             if not response:
