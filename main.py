@@ -52,9 +52,11 @@ class MyWidget(QMainWindow):
         img = QtGui.QPixmap(im)
         self.label.setPixmap(img)
 
-        def keyPressEvent(self, event):
-            if event.key() == Qt.Key_PageUp:
-                self.label.setPixmap('!!!')
+    def keyPressEvent(self, event):
+        if event.key() == Qt.Key_PageUp:
+            self.label.setPixmap('!!!')
+            print("wrhwhrwehrhw")
+        event.accept()
 
 
 if __name__ == '__main__':
