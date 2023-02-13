@@ -24,7 +24,7 @@ class MyWidget(QMainWindow):
         self.centralwidget = QtWidgets.QWidget(self)
         self.centralwidget.setObjectName("centralwidget")
         self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(10, 10, 490, 490))
+        self.label.setGeometry(QtCore.QRect(20, 10, 490, 490))
         self.label.setObjectName("label")
         self.setCentralWidget(self.centralwidget)
 
