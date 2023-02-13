@@ -9,15 +9,15 @@ class MyWidget(QMainWindow):
     def __init__(self):
         super().__init__()
         print('Введите координаты')
-        coord_x, coord_y = float(input()), float(input())
-        while (coord_x > 100 or coord_y > 100) or (coord_x < 0 or coord_y < 0):
+        self.coord_x, self.coord_y = float(input()), float(input())
+        while (self.coord_x > 100 or self.coord_y > 100) or (self.coord_x < 0 or self.coord_y < 0):
             print("неверные данные")
-            coord_x, coord_y = float(input()), float(input())
+            self.coord_x, self.coord_y = float(input()), float(input())
         print('Введите масштаб')
-        z = int(input())
-        while z > 17 or z < 0:
+        self.z = int(input())
+        while self.z > 17 or self.z < 0:
             print("неверные данные")
-            z = int(input())
+            self.z = int(input())
         self.setObjectName("MainWindow")
         self.resize(550, 500)
         self.setStyleSheet("background-color: rgb(186, 248, 105);")
@@ -38,7 +38,7 @@ class MyWidget(QMainWindow):
         QtCore.QMetaObject.connectSlotsByName(self)
         self.label.setText("TextLabel")
 
-        m = f"http://static-maps.yandex.ru/1.x/?ll={coord_x},{coord_y}&z={z}&l=map"
+        m = f"http://static-maps.yandex.ru/1.x/?ll={self.coord_x},{self.coord_y}&self.z={self.z}&l=map"
         response = requests.get(m)
         if not response:
             print("Ошибка выполнения запроса:")
@@ -54,8 +54,20 @@ class MyWidget(QMainWindow):
 
     def keyPressEvent(self, event):
         if event.key() == Qt.Key_PageUp:
-            self.label.setPixmap('!!!')
-            print("wrhwhrwehrhw")
+            self.z += 1
+            m = f"http://static-maps.yandex.ru/1.x/?ll={self.coord_x},{self.coord_y}&self.z={self.z}&l=map"
+            response = requests.get(m)
+            if not response:
+                print("Ошибка выполнения запроса:")
+                print(m)
+                print("Http статус:", response.status_code, "(", response.reason, ")")
+                sys.exit(1)
+            im = "m.png"
+            with open(im, "wb") as file:
+                file.write(response.content)
+
+            img = QtGui.QPixmap(im)
+            self.label.setPixmap(img)
         event.accept()
 
 
